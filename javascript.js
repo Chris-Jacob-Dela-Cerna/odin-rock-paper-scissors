@@ -10,7 +10,6 @@ function getComputerChoice() {
         return "Scissors"
     }
 }
-console.log(getComputerChoice());
 
 // Get input from user and return choice of rock, paper, or scissors
 function getHumanChoice() {
@@ -24,9 +23,21 @@ function getHumanChoice() {
         case "paper":
             return "Paper";
         case "scissors":
-            return "Scissors"
+            return "Scissors";
         default:
-            return null
+            return null;
     }
 }
-console.log(getHumanChoice());
+
+// Keep track of scores
+let humanScore = 0;
+let computerScore = 0;
+
+// Round Logic
+function playRound(computerChoice, humanChoice) {
+    
+}
+
+// Convert functions into variables
+const computerSelection = getComputerChoice();
+const humanSelection = getHumanChoice();
