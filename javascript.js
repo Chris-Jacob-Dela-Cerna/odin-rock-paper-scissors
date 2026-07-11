@@ -15,7 +15,7 @@ console.log(getComputerChoice())
 // Get input from user and return choice of rock, paper, or scissors
 function getHumanChoice() {
     userInput = prompt("Rock, Paper, or Scissors?")
-    if (userInput === typeof String) {
+    if (typeof userInput === "string") {
         userInput = userInput.trim().toLowerCase()
     }
     if (userInput === "rock") {
