@@ -2,14 +2,30 @@
 // Function that extracts a random choice of rock, paper, or scissors
 function getComputerChoice() {
     let number = Math.floor(Math.random() * 100)
-    let computerChoice = undefined
     if (number > 66) {
-        computerChoice = "Rock"
+        return "Rock"
     } else if (number > 33) {
-        computerChoice = "Paper"
+        return "Paper"
     } else {
-        computerChoice = "Scissors"
+        return "Scissors"
     }
-    return computerChoice
 }
 console.log(getComputerChoice())
+
+// Get input from user and return choice of rock, paper, or scissors
+function getHumanChoice() {
+    userInput = prompt("Rock, Paper, or Scissors?")
+    if (userInput === typeof String) {
+        userInput = userInput.trim().toLowerCase()
+    }
+    if (userInput === "rock") {
+        return "Rock"
+    } else if (userInput === "paper") {
+        return "Paper"
+    } else if (userInput === "scissors") {
+        return "Scissors"
+    } else {
+        return "None"
+    }
+}
+console.log(getHumanChoice())
