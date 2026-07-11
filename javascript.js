@@ -66,17 +66,29 @@ function playRound(humanChoice, computerChoice) {
       roundMessage += "You lost! Rock beats Scissors."
     }
   } else {
+    ++computerScore
     roundMessage += "You lost! Please enter a valid option."
   }
   let scoreMessage = `\n- Scores -\nComputer: ${computerScore}\nUser:     ${humanScore}`
   console.log(roundMessage + scoreMessage)
 }
 
+// Get result panel for game end
+function gameResult() {
+  if (humanScore === computerScore) {
+    return "--- Tie game! ---"
+  } else if (humanScore > computerScore) {
+    return "--- You win! ---"
+  } else {
+    return "--- You lost! ---"
+  }
+}
+
 // 5 rounds loop
 function gameLoop() {
-  for (round; round <= 5; ++round) {
-    playRound(getComputerChoice(), getHumanChoice());
-  }
+  for (round; round <= 5; ++round) 
+    { playRound(getHumanChoice(), getComputerChoice()); }
+  console.log(gameResult())
 }
 
 
