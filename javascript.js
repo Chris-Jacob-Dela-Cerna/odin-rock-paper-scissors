@@ -33,33 +33,35 @@ let computerScore = 0;
 
 // Round Logic
 function playRound(humanChoice, computerChoice) {
+  let round = `Computer: ${computerChoice}\nUser: ${humanChoice}\n`
   if (humanChoice === "Rock") {
     if (computerChoice === "Rock") {
-      console.log("Tied!")
+      round += "Tied!"
     } else if (computerChoice === "Scissors") {
-      console.log("You won! Rock beats Scissors.")
+      round += "You won! Rock beats Scissors."
     } else if (computerChoice === "Paper") {
-      console.log("You lost! Paper beats Rock.")
+      round += "You lost! Paper beats Rock."
     }
   } else if (humanChoice === "Paper") {
     if (computerChoice === "Paper") {
-      console.log("Tied!")
+      round += "Tied!"
     } else if (computerChoice === "Rock") {
-      console.log("You won! Paper beats Rock.")
+      round += "You won! Paper beats Rock."
     } else if (computerChoice === "Scissors") {
-      console.log("You lost! Scissors beats Paper.")
+      round += "You lost! Scissors beats Paper."
     }
   } else if (humanChoice === "Scissors") {
     if (computerChoice === "Scissors") {
-      console.log("Tied!")
+      round += "Tied!"
     } else if (computerChoice === "Paper") {
-      console.log("You won! Scissors beats Paper.")
+      round += "You won! Scissors beats Paper."
     } else if (computerChoice === "Rock") {
-      console.log("You lost! Rock beats Scissors.")
+      round += "You lost! Rock beats Scissors."
     }
   } else {
-    console.log("You lost! Please enter a valid option.")
+    round += "You lost! Please enter a valid option."
   }
+  console.log(round)
 }
 
 // Convert functions into variables
