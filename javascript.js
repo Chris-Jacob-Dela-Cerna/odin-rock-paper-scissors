@@ -33,35 +33,42 @@ let computerScore = 0;
 
 // Round Logic
 function playRound(humanChoice, computerChoice) {
-  let round = `Computer: ${computerChoice}\nUser: ${humanChoice}\n`
+  let roundMessage = `- Round -\nComputer: ${computerChoice}\nUser:     ${humanChoice}\n- Result -\n`;
   if (humanChoice === "Rock") {
     if (computerChoice === "Rock") {
-      round += "Tied!"
+      roundMessage += "Tied!"
     } else if (computerChoice === "Scissors") {
-      round += "You won! Rock beats Scissors."
+      ++humanScore
+      roundMessage += "You won! Rock beats Scissors."
     } else if (computerChoice === "Paper") {
-      round += "You lost! Paper beats Rock."
+      ++computerScore
+      roundMessage += "You lost! Paper beats Rock."
     }
   } else if (humanChoice === "Paper") {
     if (computerChoice === "Paper") {
-      round += "Tied!"
+      roundMessage += "Tied!"
     } else if (computerChoice === "Rock") {
-      round += "You won! Paper beats Rock."
+      ++humanScore
+      roundMessage += "You won! Paper beats Rock."
     } else if (computerChoice === "Scissors") {
-      round += "You lost! Scissors beats Paper."
+      ++computerScore
+      roundMessage += "You lost! Scissors beats Paper."
     }
   } else if (humanChoice === "Scissors") {
     if (computerChoice === "Scissors") {
-      round += "Tied!"
+      roundMessage += "Tied!"
     } else if (computerChoice === "Paper") {
-      round += "You won! Scissors beats Paper."
+      ++humanScore
+      roundMessage += "You won! Scissors beats Paper."
     } else if (computerChoice === "Rock") {
-      round += "You lost! Rock beats Scissors."
+      ++computerScore
+      roundMessage += "You lost! Rock beats Scissors."
     }
   } else {
-    round += "You lost! Please enter a valid option."
+    roundMessage += "You lost! Please enter a valid option."
   }
-  console.log(round)
+  let scoreMessage = `\n- Scores -\nComputer: ${computerScore}\nUser:     ${humanScore}`
+  console.log(roundMessage + scoreMessage)
 }
 
 // Convert functions into variables
