@@ -27,13 +27,14 @@ function getHumanChoice() {
     }
 }
 
-// Keep track of scores
+// Keep track of round and scores
+let round = 1
 let humanScore = 0;
 let computerScore = 0;
 
 // Round Logic
 function playRound(humanChoice, computerChoice) {
-  let roundMessage = `- Round -\nComputer: ${computerChoice}\nUser:     ${humanChoice}\n- Result -\n`;
+  let roundMessage = `- Round ${round} -\nComputer: ${computerChoice}\nUser:     ${humanChoice}\n- Result -\n`;
   if (humanChoice === "Rock") {
     if (computerChoice === "Rock") {
       roundMessage += "Tied!"
@@ -71,9 +72,12 @@ function playRound(humanChoice, computerChoice) {
   console.log(roundMessage + scoreMessage)
 }
 
-// Convert functions into variables
-const computerSelection = getComputerChoice();
-const humanSelection = getHumanChoice();
+// 5 rounds loop
+function gameLoop() {
+  for (round; round <= 5; ++round) {
+    playRound(getComputerChoice(), getHumanChoice());
+  }
+}
 
 
-playRound(humanSelection, computerSelection);
+gameLoop();
