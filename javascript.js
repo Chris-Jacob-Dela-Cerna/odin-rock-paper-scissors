@@ -1,20 +1,21 @@
 
-// Function that extracts a random choice of rock, paper, or scissors
+// Computer selects from Rock / Paper / Scissors
 function getComputerChoice() {
   let number = Math.floor(Math.random() * 100);
-  if (number > 66) 
-    { return "Rock" } 
-  else if (number > 33) 
-    { return "Paper" } 
-  else 
-    { return "Scissors" }
+  if (number > 66) { 
+    return "Rock" 
+  } else if (number > 33) { 
+    return "Paper" 
+  } else { 
+    return "Scissors" }
 }
 
-// Get input from user and return choice of rock, paper, or scissors
+// Validate and returns user selection
 function getHumanChoice() {
   let userInput = prompt("Rock, Paper, or Scissors?");
-  if (typeof userInput === "string") 
-    { userInput = userInput.trim().toLowerCase() }
+  if (typeof userInput === "string") { 
+    userInput = userInput.trim().toLowerCase() 
+  }
   switch (userInput) {
     case "rock":
       return "Rock";
@@ -27,12 +28,14 @@ function getHumanChoice() {
     }
 }
 
-// Keep track of round and scores
+
+// Game stat initialization
 let round = 1
 let humanScore = 0;
 let computerScore = 0;
 
-// Round Logic
+
+// Round logic
 function playRound(humanChoice, computerChoice) {
   let roundMessage = `- Round ${round} -\nComputer: ${computerChoice}\nUser:     ${humanChoice}\n- Result -\n`;
   if (humanChoice === "Rock") {
@@ -73,7 +76,7 @@ function playRound(humanChoice, computerChoice) {
   console.log(roundMessage + scoreMessage)
 }
 
-// Get result panel for game end
+// Round end message
 function gameResult() {
   if (humanScore === computerScore) {
     return "--- Tie game! ---"
@@ -83,13 +86,3 @@ function gameResult() {
     return "--- You lost! ---"
   }
 }
-
-// 5 rounds loop
-function gameLoop() {
-  for (round; round <= 5; ++round) 
-    { playRound(getHumanChoice(), getComputerChoice()); }
-  console.log(gameResult())
-}
-
-
-gameLoop();
