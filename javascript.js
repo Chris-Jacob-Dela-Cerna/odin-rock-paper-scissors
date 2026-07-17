@@ -1,4 +1,5 @@
 
+
 // Computer selects from Rock / Paper / Scissors
 function getComputerChoice() {
   let number = Math.floor(Math.random() * 100);
@@ -8,24 +9,6 @@ function getComputerChoice() {
     return "Paper" 
   } else { 
     return "Scissors" }
-}
-
-// Validate and returns user selection
-function getHumanChoice() {
-  let userInput = prompt("Rock, Paper, or Scissors?");
-  if (typeof userInput === "string") { 
-    userInput = userInput.trim().toLowerCase() 
-  }
-  switch (userInput) {
-    case "rock":
-      return "Rock";
-    case "paper":
-      return "Paper";
-    case "scissors":
-      return "Scissors";
-    default:
-      return null;
-    }
 }
 
 
@@ -40,49 +23,67 @@ function playRound(humanChoice, computerChoice) {
   let roundMessage = `- Round ${round} -\nComputer: ${computerChoice}\nUser:     ${humanChoice}\n- Result -\n`;
   if (humanChoice === "Rock") {
     if (computerChoice === "Rock") {
-      roundMessage += "Tied!"
+      roundMessage += "Tied!";
     } else if (computerChoice === "Scissors") {
-      ++humanScore
-      roundMessage += "You won! Rock beats Scissors."
+      ++humanScore;
+      roundMessage += "You won! Rock beats Scissors.";
     } else if (computerChoice === "Paper") {
-      ++computerScore
-      roundMessage += "You lost! Paper beats Rock."
+      ++computerScore;
+      roundMessage += "You lost! Paper beats Rock.";
     }
   } else if (humanChoice === "Paper") {
     if (computerChoice === "Paper") {
-      roundMessage += "Tied!"
+      roundMessage += "Tied!";
     } else if (computerChoice === "Rock") {
-      ++humanScore
-      roundMessage += "You won! Paper beats Rock."
+      ++humanScore;
+      roundMessage += "You won! Paper beats Rock.";
     } else if (computerChoice === "Scissors") {
-      ++computerScore
-      roundMessage += "You lost! Scissors beats Paper."
+      ++computerScore;
+      roundMessage += "You lost! Scissors beats Paper.";
     }
   } else if (humanChoice === "Scissors") {
     if (computerChoice === "Scissors") {
-      roundMessage += "Tied!"
+      roundMessage += "Tied!";
     } else if (computerChoice === "Paper") {
-      ++humanScore
-      roundMessage += "You won! Scissors beats Paper."
+      ++humanScore;
+      roundMessage += "You won! Scissors beats Paper.";
     } else if (computerChoice === "Rock") {
       ++computerScore
       roundMessage += "You lost! Rock beats Scissors."
     }
   } else {
-    ++computerScore
-    roundMessage += "You lost! Please enter a valid option."
+    ++computerScore;
+    roundMessage += "You lost! Please enter a valid option.";
   }
-  let scoreMessage = `\n- Scores -\nComputer: ${computerScore}\nUser:     ${humanScore}`
-  console.log(roundMessage + scoreMessage)
+  let scoreMessage = `\n- Scores -\nComputer: ${computerScore}\nUser:     ${humanScore}`;
+  console.log(roundMessage + scoreMessage);
+  round++
 }
+
 
 // Round end message
 function gameResult() {
   if (humanScore === computerScore) {
-    return "--- Tie game! ---"
+    return "--- Tie game! ---";
   } else if (humanScore > computerScore) {
-    return "--- You win! ---"
+    return "--- You win! ---";
   } else {
-    return "--- You lost! ---"
+    return "--- You lost! ---";
   }
 }
+
+
+const options = document.getElementById("options")
+options.addEventListener("click", function(event) {
+  switch (event.target.id) {
+    case "rock":
+      playRound("Rock", getComputerChoice())
+      break
+    case "paper":
+      playRound("Paper", getComputerChoice())
+      break
+    case "scissors":
+      playRound("Scissors", getComputerChoice())
+      break
+  }
+});
