@@ -79,6 +79,7 @@ options.addEventListener("click", function(event) {
   const playerChoice = target.id,
         computerChoice = getComputerChoice(),
         roundResult = playRound(playerChoice, computerChoice);
-
   console.log(playerChoice, computerChoice, roundResult)
+
+  
 });
