@@ -59,13 +59,26 @@ function getComputerChoice() {
 }
 
 
-// Round end message TO BE FIXED
-function gameResult() {
-  if (humanScore > computerScore) {
-    return "--- You win! ---";
-  } else {
-    return "--- You lost! ---";
-  }
+function buildSummaryNodes(panel, start) {
+  const roundSummary = document.createElement("div"),
+        plyMove = document.createElement("p"),
+        comMove = document.createElement("p"),
+        result = document.createElement("h2"),
+        plyScore = document.createElement("p"),
+        comScore = document.createElement("p");
+  roundSummary.setAttribute("id", "summary")
+  plyMove.setAttribute("id", "player-move")
+  comMove.setAttribute("id", "computer-move")
+  result.setAttribute("id", "results")
+  plyScore.setAttribute("id", "player-score")
+  comScore.setAttribute("id", "computer-score")
+  roundSummary.appendChild(plyMove)
+  roundSummary.appendChild(comMove)
+  roundSummary.appendChild(result)
+  roundSummary.appendChild(plyScore)
+  roundSummary.appendChild(comScore)
+  panel.insertBefore(roundSummary, start)
+  panel.removeChild(start)
 }
 
 
@@ -80,28 +93,16 @@ options.addEventListener("click", function(event) {
 
   const panel = document.getElementById("panel"),
         start = document.getElementById("start");
-  if (start) {
-    const roundSummary = document.createElement("div"),
-          plyMove = document.createElement("p"),
-          comMove = document.createElement("p"),
-          results = document.createElement("h2"),
-          plyScore = document.createElement("p"),
-          comScore = document.createElement("p");
-    roundSummary.setAttribute("id", "summary")
-    plyMove.setAttribute("id", "player-move")
-    comMove.setAttribute("id", "computer-move")
-    results.setAttribute("id", "results")
-    plyScore.setAttribute("id", "player-score")
-    comScore.setAttribute("id", "computer-score")
-    roundSummary.appendChild(plyMove)
-    roundSummary.appendChild(comMove)
-    roundSummary.appendChild(results)
-    roundSummary.appendChild(plyScore)
-    roundSummary.appendChild(comScore)
-    panel.insertBefore(roundSummary, start)
-    panel.removeChild(start)
-  }
+  if (start) buildSummaryNodes(panel, start);
 
-  
-
+  const plyMove = document.getElementById("player-move"),
+        comMove = document.getElementById("computer-move"),
+        result = document.getElementById("results"),
+        plyScore = document.getElementById("player-score"),
+        comScore = document.getElementById("computer-score");
+  plyMove.textContent = `You: ${playerChoice}`
+  comMove.textContent = `Bot: ${computerChoice}`
+  result.textContent = roundResult
+  plyScore.textContent = `You: ${humanScore}`
+  comScore.textContent = `Bot: ${computerScore}`
 });
