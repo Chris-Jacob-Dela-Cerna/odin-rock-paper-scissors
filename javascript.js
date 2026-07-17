@@ -1,4 +1,5 @@
 
+
 // Game stat initialization
 let round = 1
 let humanScore = 0;
@@ -42,7 +43,6 @@ function playRound(humanChoice, computerChoice) {
       ++computerScore;
       roundResult = "You lost! Please enter a valid option.";
   }
-  ++round;
   return roundResult
 }
 
@@ -61,9 +61,7 @@ function getComputerChoice() {
 
 // Round end message TO BE FIXED
 function gameResult() {
-  if (humanScore === computerScore) {
-    return "--- Tie game! ---";
-  } else if (humanScore > computerScore) {
+  if (humanScore > computerScore) {
     return "--- You win! ---";
   } else {
     return "--- You lost! ---";
@@ -73,13 +71,37 @@ function gameResult() {
 
 const options = document.getElementById("options");
 options.addEventListener("click", function(event) {
-  const target = event.target
+  const target = event.target;
   if (target.tagName !== "BUTTON") return;
 
   const playerChoice = target.id,
         computerChoice = getComputerChoice(),
         roundResult = playRound(playerChoice, computerChoice);
-  console.log(playerChoice, computerChoice, roundResult)
+
+  const panel = document.getElementById("panel"),
+        start = document.getElementById("start");
+  if (start) {
+    const roundSummary = document.createElement("div"),
+          plyMove = document.createElement("p"),
+          comMove = document.createElement("p"),
+          results = document.createElement("h2"),
+          plyScore = document.createElement("p"),
+          comScore = document.createElement("p");
+    roundSummary.setAttribute("id", "summary")
+    plyMove.setAttribute("id", "player-move")
+    comMove.setAttribute("id", "computer-move")
+    results.setAttribute("id", "results")
+    plyScore.setAttribute("id", "player-score")
+    comScore.setAttribute("id", "computer-score")
+    roundSummary.appendChild(plyMove)
+    roundSummary.appendChild(comMove)
+    roundSummary.appendChild(results)
+    roundSummary.appendChild(plyScore)
+    roundSummary.appendChild(comScore)
+    panel.insertBefore(roundSummary, start)
+    panel.removeChild(start)
+  }
 
   
+
 });
