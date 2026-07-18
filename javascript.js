@@ -99,10 +99,12 @@ options.addEventListener("click", function(event) {
     const restart = document.createElement("h2");
     restart.textContent = "Try again?"
     roundSummary.appendChild(restart)
-    const restartButton = document.createElement("button")
-    restartButton.textContent = "New Game"
-    roundSummary.appendChild(restartButton)
-  }
+    const restartBtn = document.createElement("button")
+    restartBtn.textContent = "New Game"
+    restartBtn.setAttribute("id", "restart")
+    restartBtn.addEventListener("click", () => location.reload())
+    roundSummary.appendChild(restartBtn)
+  } 
 
   const start = document.getElementById("start");
   if (!roundSummary) buildSummaryNodes(panel, start);
