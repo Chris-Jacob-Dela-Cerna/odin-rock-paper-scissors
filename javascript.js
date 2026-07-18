@@ -1,13 +1,14 @@
 
 
 // Game stat initialization
-let round = 1
+let round = 0
 let humanScore = 0;
 let computerScore = 0;
 
 
 // Round logic
 function playRound(humanChoice, computerChoice) {
+  ++round
   switch (humanChoice) {
     case (computerChoice):
       roundResult = "Tied!";
@@ -109,11 +110,13 @@ options.addEventListener("click", function(event) {
   const start = document.getElementById("start");
   if (!roundSummary) buildSummaryNodes(panel, start);
 
-  const plyMove = document.getElementById("player-move"),
+  const header = document.getElementById("header"),
+        plyMove = document.getElementById("player-move"),
         comMove = document.getElementById("computer-move"),
         result = document.getElementById("results"),
         plyScore = document.getElementById("player-score"),
         comScore = document.getElementById("computer-score");
+  header.textContent = `Round ${round}`
   plyMove.textContent = `You: ${playerChoice}`
   comMove.textContent = `Bot: ${computerChoice}`
   result.textContent = roundResult
