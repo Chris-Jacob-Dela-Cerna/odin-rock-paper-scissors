@@ -90,10 +90,22 @@ options.addEventListener("click", function(event) {
   const playerChoice = target.id,
         computerChoice = getComputerChoice(),
         roundResult = playRound(playerChoice, computerChoice);
-
+    
   const panel = document.getElementById("panel"),
-        start = document.getElementById("start");
-  if (start) buildSummaryNodes(panel, start);
+        roundSummary = document.getElementById("summary"),
+        options = document.getElementById("options");
+  if (humanScore >= 5 || computerScore >= 5) {
+    panel.removeChild(options)
+    const restart = document.createElement("h2");
+    restart.textContent = "Try again?"
+    roundSummary.appendChild(restart)
+    const restartButton = document.createElement("button")
+    restartButton.textContent = "New Game"
+    roundSummary.appendChild(restartButton)
+  }
+
+  const start = document.getElementById("start");
+  if (!roundSummary) buildSummaryNodes(panel, start);
 
   const plyMove = document.getElementById("player-move"),
         comMove = document.getElementById("computer-move"),

@@ -18,7 +18,7 @@ body {
   padding: 16px;
   max-width: 340px;
 
-  h1 {
+  #header {
     font-size: 24px;
     font-weight: 500;
     margin: 0px;
@@ -32,6 +32,20 @@ body {
     text-align: center;
   }
 
+  #summary {
+    text-align: center;
+    p {
+      font-size: 14px;
+      font-weight: 400;
+      margin: 2px 0;
+    }
+    h2 {
+      font-size: 18px;
+      font-weight: 700;
+      margin: 6px 0;
+    }
+  }
+
   #options {
     display: flex;
     justify-content: center;
@@ -43,4 +57,10 @@ body {
       padding: 3px 12px;
     }
   }
+}
+
+button {
+  font-weight: 600;
+  margin-top: 6px;
+  padding: 3px 12px;
 }
