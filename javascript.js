@@ -26,7 +26,7 @@ function playRound(humanChoice, computerChoice) {
       if (computerChoice === "rock") {
         ++humanScore;
         roundResult = "You won! Paper beats Rock.";
-      } else if (computerChoice === "Scissors") {
+      } else if (computerChoice === "scissors") {
         ++computerScore;
         roundResult = "You lost! Scissors beats Paper.";
       }
